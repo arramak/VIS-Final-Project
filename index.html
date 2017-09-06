@@ -1,0 +1,184 @@
+<!--
+Visualization final project..
+Creating helpful visualization for the scouts in Europe
+
+Data : European Soccer Database
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Final Project</title>
+
+  <script src="./lib/d3.v3.min.js"></script>
+  <script src="./lib/topojson.v1.min.js"></script>
+  <script src="./src/graphs.js"></script>
+
+  <style type="text/css">
+    /* Style for Custom Tooltip */
+    div.tooltip {
+        position: absolute;
+        text-align: center;
+        width: 60px;
+        height: 28px;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: white;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+    }
+
+    /* Legend Font Style */
+    body {
+        font: 11px sans-serif;
+    }
+
+
+    svg {
+      font: 10px sans-serif;
+    }
+
+    .background path {
+      fill: none;
+      stroke: #ddd;
+      shape-rendering: crispEdges;
+    }
+
+    .brush .extent {
+      fill-opacity: .3;
+      stroke: #fff;
+      shape-rendering: crispEdges;
+    }
+
+    .axis line,
+    .axis path {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .axis text {
+      text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+    }
+    
+    #graph {
+      width:1700px;
+      height:1000px;
+    }
+
+    #first {
+      float:left;
+      width: 50%;
+      height: 60%;
+      /*background: yellow*/
+    }
+
+    #second {
+      float:left;
+      width: 50%;
+      height: 62%;
+      /*background: green*/
+    }
+
+    #third {
+      float:left;
+      width: 100%;
+      height:70%;
+      /*background: black*/
+    }
+
+    #second .axis path, #second .axis line {
+      fill: none;
+      stroke: #000;
+    }
+
+    #pca3 svg {
+      font: 10px sans-serif;
+      padding: 10px;
+    }
+
+    #pca3 .axis,
+    #pca3 .frame {
+      shape-rendering: crispEdges;
+    }
+
+    #pca3 .axis line {
+      stroke: #ddd;
+    }
+
+    #pca3 .axis path {
+      display: none;
+    }
+
+    #pca3 .cell text {
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    #pca3 .frame {
+      fill: none;
+      stroke: #aaa;
+    }
+
+    #pca3 circle {
+      fill-opacity: .7;
+    }
+
+    #pca3 circle.hidden {
+      fill: #ccc !important;
+    }
+
+    #pca3 .extent {
+      fill: #000;
+      fill-opacity: .125;
+      stroke: #fff;
+    }
+
+    #trial .grow rect {
+      stroke: black;
+      shape-rendering: crispEdges;
+      fill: none;
+    }
+    
+    #trial .axis text {
+      font: 10px sans-serif;
+    }
+    
+    #trial .legend text {
+      font: 12px sans-serif;
+    }
+    
+    #trial .axis path,
+    #trial .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+    
+    #trial .x.axis path,
+    #trial .x.axis line {
+      display: none;
+    }
+    
+    
+    #trial .y.axis path,
+    #trial .y.axis line {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+    <h1>European Professional Football - 2015/2016</h1>
+    <button id="map" onclick="makemap()">HOME</button>
+    <h2 id="place"></h2>
+    <div id="graph"></div>
+    <div id="trial"></div>
+    <script type="text/javascript">
+    makemap();
+    </script>
+</body>
+</html>
